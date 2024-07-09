@@ -5,13 +5,13 @@ import pfp from "./assets/cat.jpg"
 
 const ProfilePage = () => {
   return (
-    <div className="bg-gray-100 font-sans flex items-center justify-center max-w-4xl mx-auto px-4 py-6 sm:py-8">
-      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-screen-xl ">
+    <div className="font-sans max-w-4xl mx-auto px-4 py-6 sm:py-8">
+      <div className="container mx-auto py-6 sm:py-8 max-w-screen-xl ">
         <div className=" mb-6 sm:mb-8">
           <img src={pfp} alt="Chaitanya Khair" className="rounded-full  mb-3 sm:mb-4 w-20 h-20 sm:w-24 sm:h-24" />
           <h1 className="text-2xl sm:text-3xl font-bold">Chaitanya Khair</h1>
           <p className="text-gray-600 text-sm sm:text-base">Web Designer and Devloper</p>
-          <div className="flex space-x-4 mt-3 sm:mt-4">
+          <div className="flex space-x-4 mt-3 py-4 sm:mt-4">
             <a href="#" className="text-gray-700 hover:text-black">
               <Github size={18} className="sm:w-5 sm:h-5" />
             </a>
@@ -22,7 +22,9 @@ const ProfilePage = () => {
               <Linkedin size={18} className="sm:w-5 sm:h-5" />
             </a>
           </div>
+          <hr></hr>
         </div>
+        
 
 
 
@@ -36,12 +38,13 @@ const ProfilePage = () => {
         <div>
           <h2 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Experience</h2>
           <div className="space-y-3 sm:space-y-4">
+            <div className='relative border-s border-gray-200 px-4 space-y-3'>
             {[
               { title: 'ceo', company: 'some random company', current: true },
               { title: 'ceo', company: 'some random company', current: false },
             ].map((job, index) => (
               <div key={index} className="flex items-start">
-                <div className="w-2 h-2 sm:w-3 sm:h-3 bg-gray-400 rounded-full mt-1.5 sm:mt-2 mr-3 sm:mr-4"></div>
+                <div className="w-2 h-2 sm:w-3 sm:h-3 bg-gray-400 rounded-full mt-1.5 sm:mt-2 mr-3 sm:mr-4 "></div>
                 <div>
                   <h3 className="font-semibold text-sm sm:text-base">
                     {job.title}{' '}
@@ -55,6 +58,8 @@ const ProfilePage = () => {
                 </div>
               </div>
             ))}
+            </div>
+
           </div>
         </div>
       </div>
