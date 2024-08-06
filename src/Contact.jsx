@@ -6,6 +6,7 @@ const ContactForm = () => {
     email: '',
     message: ''
   });
+  const [status, setStatus] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -15,15 +16,40 @@ const ContactForm = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log('Form submitted:', formData);
+    setStatus('Sending...');
+
+    const formDataToSend = new FormData();
+    Object.entries(formData).forEach(([key, value]) => {
+      formDataToSend.append(key, value);
+    });
+
+    // Replace 'YOUR_ACCESS_KEY' with your actual Web3Forms access key
+    formDataToSend.append('access_key', '733e1795-1b00-4777-a33f-940fe08cf7d5');
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formDataToSend
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        setStatus('Message sent successfully!');
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        setStatus('Failed to send message. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      setStatus('An error occurred. Please try again later.');
+    }
   };
 
   return (
     <div className="py-16 px-4 sm:px-5 lg:px-8">
-      <div className="max-w-lg mx-auto  ">
+      <div className="max-w-lg mx-auto">
         <h2 className="text-2xl font-bold text-center text-gray-800 mb-2">Contact</h2>
         <div className="w-16 h-1 bg-gray-200 mx-auto mb-6"></div>
         <p className="text-center text-gray-700 mb-8">Have a question or want to work together?</p>
@@ -65,6 +91,7 @@ const ContactForm = () => {
             </button>
           </div>
         </form>
+        {status && <p className="mt-4 text-center text-sm">{status}</p>}
       </div>
     </div>
   );

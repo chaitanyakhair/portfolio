@@ -1,6 +1,7 @@
 import React from 'react';
 
-const ProjectCard = ({ icon, title, description }) => (
+const ProjectCard = ({ icon, title, description, link }) => (
+  <a href={link} target="_blank" rel="noopener noreferrer" className="block">
   <div className="flex items-center space-x-4 hover:-translate-y-2 cursor-pointer">
     <div className="bg-gray-900 rounded-lg p-2 flex-shrink-0 w-10 h-10 flex items-center justify-center">
       {icon}
@@ -10,34 +11,39 @@ const ProjectCard = ({ icon, title, description }) => (
       <p className="text-gray-600 text-xs sm:text-sm">{description}</p>
     </div>
   </div>
+  </a>
 );
 
 const ProjectsComponent = () => {
   const projects = [
     {
-      icon: <span className="text-white text-xl">{"<>"}</span>,
-      title: "abc",
-      description: "this is some random description.I'll fill it later."
+      icon: <span className="text-white text-xl">{"♘"}</span>,
+      title: "Gambit",
+      description: "A multiplayer chess game, which allows 2 players to play chess online.",
+      link: "https://github.com/chaitanyakhair/chess"
     },
     {
-      icon: <span className="text-white text-xl">□</span>,
-      title: "abc",
-      description: "this is some random description.I'll fill it later."
+      icon: <span className="text-white text-xl">🛪</span>,
+      title: "Realtime tracker",
+      description: "Realtime location tracking app which allows to see location of everyone connected at a time.",
+      link: "https://github.com/chaitanyakhair/realtime_tracker"
     },
     {
-      icon: <span className="text-white text-xl">E</span>,
-      title: "abc",
-      description: "this is some random description.I'll fill it later."
+      icon: <span className="text-white text-xl">☏</span>,
+      title: "Camcall",
+      description: "Video calling app with functionalities like Chatting, Recording, Scheduling meetings."
     },
     {
-      icon: <span className="text-white text-xl">✕</span>,
-      title: "ck.com",
-      description: "My personal websiter."
+      icon: <span className="text-white text-xl">@</span>,
+      title: "chaitanyakhair.me",
+      description: "My personal website.",
+      link: "https://github.com/chaitanyakhair/portfolio"
     },
     {
-      icon: <span className="text-white text-xl">"</span>,
-      title: "abc",
-      description: "this is some random description.I'll fill it later."
+      icon: <span className="text-white text-xl">r</span>,
+      title: "Refokus clone",
+      description: "Clone of refokus.com's frontend.",
+      link:"https://github.com/chaitanyakhair/refokus"
     }
   ];
 
